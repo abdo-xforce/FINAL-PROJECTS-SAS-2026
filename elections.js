@@ -217,6 +217,12 @@ function supprimerCandidat() {
 
 function voter() {
     const cinElecteur = prompt("Entrer CIN de l'electeur : ");
+    const ageElecteur = Number(prompt("Entrer votre age : "));
+
+    if (ageElecteur < 18) {
+        return "Vous n'avez pas le droit de voter";
+    }
+
     const cinCandidat = prompt("Entrer CIN du candidat : ");
 
     const candidat = candidats.find(function(candidat) {
