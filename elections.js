@@ -118,6 +118,10 @@ function ajouterCandidat() {
     const age = Number(prompt("Enter age : "));
     const partiPolitique = prompt("Enter parti politique : ");
 
+    if (isNaN(age) || age <= 0) {
+        return "Age invalide";
+    }
+
     const candidat = {
         cin: cin,
         nom: nom,
@@ -137,6 +141,11 @@ function ajouterPlusieursCandidats() {
     const nombre = Number(
         prompt("Entrer le nombre de candidats que tu veux ajouter : ")
     );
+
+    if (isNaN(nombre) || nombre <= 0) {
+        console.log("Nombre invalide");
+        return;
+    }
 
     for (let i = 0; i < nombre; i++) {
         console.log("Candidat", i + 1);
@@ -188,6 +197,10 @@ function modifierCandidat() {
                 "Entrer le nouveau parti politique : "
             );
 
+            if (isNaN(nouvelAge) || nouvelAge <= 0) {
+                return "Age invalide";
+            }
+
             candidats[i].age = nouvelAge;
             candidats[i].partiPolitique = nouveauParti;
 
@@ -218,6 +231,10 @@ function supprimerCandidat() {
 function voter() {
     const cinElecteur = prompt("Entrer CIN de l'electeur : ");
     const ageElecteur = Number(prompt("Entrer votre age : "));
+
+    if (isNaN(ageElecteur) || ageElecteur <= 0) {
+        return "Age invalide";
+    }
 
     if (ageElecteur < 18) {
         return "Vous n'avez pas le droit de voter";
