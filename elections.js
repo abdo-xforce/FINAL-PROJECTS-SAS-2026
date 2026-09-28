@@ -40,54 +40,11 @@ const candidats = [
         partiPolitique: "Istiqlal",
         age: 52,
         electeurs: []
-    },
-    {
-        cin: "KL678901",
-        nom: "Ziani",
-        prenom: "Nadia",
-        partiPolitique: "Indépendant",
-        age: 33,
-        electeurs: []
-    },
-    {
-        cin: "MN789012",
-        nom: "Tazi",
-        prenom: "Hamza",
-        partiPolitique: "USFP",
-        age: 60,
-        electeurs: ["QR901234"]
-    },
-    {
-        cin: "OP890123",
-        nom: "Idrissi",
-        prenom: "Meryem",
-        partiPolitique: "PJD",
-        age: 27,
-        electeurs: []
-    },
-    {
-        cin: "QR901234",
-        nom: "Berrada",
-        prenom: "Omar",
-        partiPolitique: "RNI",
-        age: 38,
-        electeurs: ["CD234567", "EF345678", "MN789012"]
-    },
-    {
-        cin: "ST012345",
-        nom: "Fassi",
-        prenom: "Khadija",
-        partiPolitique: "PAM",
-        age: 31,
-        electeurs: []
     }
 ];
 
-
 function afficherMenu() {
-    console.log("==================================");
-    console.log("   GESTION DES ELECTIONS - MAROC  ");
-    console.log("==================================");
+    console.log("\n --GESTION DES ELECTIONS - MAROC--");
     console.log("1. Ajouter un candidat");
     console.log("2. Ajouter plusieurs candidats");
     console.log("3. Afficher les candidats");
@@ -100,7 +57,6 @@ function afficherMenu() {
     console.log("10. Afficher les statistiques");
     console.log("0. Quitter");
 }
-
 
 function ajouterCandidat() {
     const cin = prompt("Enter CIN : ");
@@ -136,7 +92,6 @@ function ajouterCandidat() {
     return "Candidat ajoute";
 }
 
-
 function ajouterPlusieursCandidats() {
     const nombre = Number(
         prompt("Entrer le nombre de candidats que tu veux ajouter : ")
@@ -153,7 +108,6 @@ function ajouterPlusieursCandidats() {
     }
 }
 
-
 function afficherDetailsCandidat(candidat) {
     console.log("CIN :", candidat.cin);
     console.log("Nom :", candidat.nom);
@@ -164,14 +118,12 @@ function afficherDetailsCandidat(candidat) {
     console.log("----------------------------");
 }
 
-
 function afficherCandidats(listeCandidats) {
     for (let i = 0; i < listeCandidats.length; i++) {
         console.log("Candidat", i + 1);
         afficherDetailsCandidat(listeCandidats[i]);
     }
 }
-
 
 function rechercherCandidat() {
     const nom = prompt("Entrer le nom que tu veux chercher : ");
@@ -182,7 +134,6 @@ function rechercherCandidat() {
 
     return result;
 }
-
 
 function modifierCandidat() {
     const cin = prompt("Entrer CIN du candidat : ");
@@ -211,7 +162,6 @@ function modifierCandidat() {
     return "CIN non trouve";
 }
 
-
 function supprimerCandidat() {
     const cin = prompt("Entrer CIN du candidat : ");
 
@@ -226,7 +176,6 @@ function supprimerCandidat() {
 
     return "CIN non trouve";
 }
-
 
 function voter() {
     const cinElecteur = prompt("Entrer CIN de l'electeur : ");
@@ -261,7 +210,6 @@ function voter() {
     return "Vote ajoute";
 }
 
-
 function MaxVotes() {
     let max = 0;
 
@@ -274,18 +222,19 @@ function MaxVotes() {
     return max;
 }
 
-
 function filtrerCandidatsParParti() {
    const parti = prompt("Entrer le parti politique : ");
    return candidats.filter(function(candidat) {
     return candidat.partiPolitique.toLowerCase() === parti.toLowerCase();
 })};
 
-
 function trierCandidatsParVotes() {
     for (let i = 0; i < candidats.length; i++) {
         for (let j = i + 1; j < candidats.length; j++) {
-            if (candidats[i].electeurs.length < candidats[j].electeurs.length) {
+            const votesI = candidats[i].electeurs.length;
+            const votesJ = candidats[j].electeurs.length;
+
+            if (votesI < votesJ) {
                 const candidatTemporaire = candidats[i];
                 candidats[i] = candidats[j];
                 candidats[j] = candidatTemporaire;
@@ -295,7 +244,6 @@ function trierCandidatsParVotes() {
 
     return candidats;
 }
-
 
 function afficherStatistiques() {
     console.log("Nombre total de candidats :", candidats.length);
@@ -346,7 +294,6 @@ function afficherStatistiques() {
         console.log(partis[i], ":", nombresCandidats[i]);
     }
 }
-
 
 let choix = -1;
 
