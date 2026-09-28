@@ -177,7 +177,7 @@ function rechercherCandidat() {
     const nom = prompt("Entrer le nom que tu veux chercher : ");
 
     const result = candidats.find(function(candidat) {
-        return candidat.nom === nom;
+        return candidat.nom.toLowerCase() === nom.toLowerCase();
     });
 
     return result;
@@ -278,7 +278,7 @@ function MaxVotes() {
 function filtrerCandidatsParParti() {
    const parti = prompt("Entrer le parti politique : ");
    return candidats.filter(function(candidat) {
-    return candidat.partiPolitique === parti
+    return candidat.partiPolitique.toLowerCase() === parti.toLowerCase();
 })};
 
 
