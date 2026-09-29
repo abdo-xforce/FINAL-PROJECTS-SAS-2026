@@ -231,13 +231,10 @@ function filtrerCandidatsParParti() {
 function trierCandidatsParVotes() {
     for (let i = 0; i < candidats.length; i++) {
         for (let j = i + 1; j < candidats.length; j++) {
-            const votesI = candidats[i].electeurs.length;
-            const votesJ = candidats[j].electeurs.length;
-
-            if (votesI < votesJ) {
-                const candidatTemporaire = candidats[i];
+            if (candidats[i].electeurs.length < candidats[j].electeurs.length) {
+                let temp = candidats[i];
                 candidats[i] = candidats[j];
-                candidats[j] = candidatTemporaire;
+                candidats[j] = temp;
             }
         }
     }
